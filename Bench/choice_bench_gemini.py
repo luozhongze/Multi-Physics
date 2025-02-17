@@ -14,7 +14,7 @@ import json
 
 
 client = OpenAI(
-    api_key="AIzaSyAOsvSfQnucswBoxXkiR9haSIc0KcIXtvg",
+    api_key=" ",
     base_url="https://generativelanguage.googleapis.com/v1beta/",
 )
 
@@ -30,7 +30,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     model_name = "gemini-2.0-flash"
-    api_key = "AIzaSyAOsvSfQnucswBoxXkiR9haSIc0KcIXtvg"
+    api_key = " "
     model_api = GeminiAPI(api_key, model_name="gemini-2.0-flash", temperature=0, max_tokens=8192)
 
     multi_images = True # whether to support multi images input, True means support, False means not support
