@@ -67,7 +67,7 @@ def choice_test(**kwargs):
     save_file = os.path.join(save_dir, f'{model_name}_{keyword}.json')
 
     if os.path.exists(save_file):
-        with open(save_file, 'r') as f:
+        with open(save_file, 'r', encoding='utf-8') as f:
             model_answer_dict = json.load(f)['example']
     else:
         model_answer_dict = []
