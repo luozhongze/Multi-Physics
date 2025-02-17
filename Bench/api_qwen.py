@@ -6,7 +6,7 @@ from openai import OpenAI
 
 
 client = OpenAI(
-    api_key="sk-4edd528b52524765893eec7f96b39b12",  # 如果使用环境变量，请设置环境变量"YOUR_API_KEY"
+    api_key=" ",
     base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
 )
 
@@ -98,7 +98,7 @@ def test(model, prompt: str, question: str, picture: list):
     return response
 
 if __name__ == "__main__":
-    api_key = "sk-4edd528b52524765893eec7f96b39b12",
+    api_key = " ",
     model_api = QwenAPI(api_key, model_name="qwen-vl-plus-latest", temperature=0, max_tokens=8192)
 
     data_example = {
