@@ -7,7 +7,7 @@ import google.api_core.exceptions
 
 
 client = OpenAI(
-    api_key="AIzaSyAukuJRY4BiS9alY6aM0d818x70qD2zPuQ",  # 如果使用环境变量，请设置环境变量"YOUR_API_KEY"
+    api_key=" ",
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
 )
 
@@ -24,9 +24,7 @@ class GeminiAPI:
             return base64.b64encode(image_file.read()).decode('utf-8')
 
     def forward(self, prompt, question, picture):
-        # 构建 content 列表，先添加文本部分
         usr_content = [{"type": "text", "text": question}]
-        # 再添加图片部分
         for pic in picture:
             usr_content.append({
                 'type': "image_url",
@@ -100,7 +98,7 @@ def test(model, prompt: str, question: str, picture: list):
     return response
 
 if __name__ == "__main__":
-    api_key = "AIzaSyAukuJRY4BiS9alY6aM0d818x70qD2zPuQ",
+    api_key = " ",
     model_api = GeminiAPI(api_key, model_name="gemini-2.0-flash-exp", temperature=0, max_tokens=3000)
 
     data_example = {
