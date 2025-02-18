@@ -19,7 +19,6 @@ if __name__ == "__main__":
         data = json.load(f)['examples']
     f.close()
 
-    ### An example of using OpenAI GPT-4Vision model to generate the json file for the benchmarking of the model
     parser = argparse.ArgumentParser()
     args = parser.parse_args()
 
