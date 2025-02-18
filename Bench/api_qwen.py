@@ -99,7 +99,7 @@ def test(model, prompt: str, question: str, picture: list):
 
 if __name__ == "__main__":
     api_key = " ",
-    model_api = QwenAPI(api_key, model_name="qwen-vl-plus-latest", temperature=0, max_tokens=8192)
+    model_api = QwenAPI(api_key, model_name="qwen-vl-max-latest", temperature=0, max_tokens=8192)
 
     data_example = {
         "category": "exclusive",
