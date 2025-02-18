@@ -26,10 +26,10 @@ Physics-MM: A Chinese Benchmark for Evaluating Multimodal Large Language Models 
 | Ai2D            | 5K     | 9.78          | None | ✘     | MC           | Eng.   |
 | FigureQA        | >1M    | 6.07          | None | ✘     | BC           | Eng.   |
 | ScienceQA       | 6K     | 12.11         | None | ✘     | MC           | Eng.   |
-| MMU             | 11.5K  | 59.23         | None | √     | MC+Open      | Eng.   |
+| MMU             | 11.5K  | 59.23         | None | ✔     | MC+Open      | Eng.   |
 | MM-Bench-CN     | 3K     | 15.48         | None | ✘     | MC           | T. Chi |
-| GAOKAO-MM       | 0.65K  | 260.19        | None | √     | MC           | N. Chi |
-| Physics-MM      | 1.41K  | 206.75        | 239.74 | √     | MC           | N. Chi |
+| GAOKAO-MM       | 0.65K  | 260.19        | None | ✔     | MC           | N. Chi |
+| Physics-MM      | 1.41K  | 206.75        | 239.74 | ✔     | MC           | N. Chi |
 
 ## Evaluation results
 
