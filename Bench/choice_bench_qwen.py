@@ -15,7 +15,7 @@ import json
 
 client = OpenAI(
     api_key=" ",
-    base_url="https://generativelanguage.googleapis.com/v1beta/",
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
 )
 
 if __name__ == "__main__":
@@ -29,9 +29,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     args = parser.parse_args()
 
-    model_name = "qwen-vl-plus-latest"
+    model_name = "qwen-vl-max-latest"
     api_key = " "
-    model_api = QwenAPI(api_key, model_name="qwen-vl-plus-latest", temperature=0, max_tokens=8192)
+    model_api = QwenAPI(api_key, model_name="qwen-vl-max-latest", temperature=0, max_tokens=8192)
 
     multi_images = True # whether to support multi images input, True means support, False means not support
 
@@ -55,5 +55,3 @@ if __name__ == "__main__":
             question_type, 
             multi_images=multi_images
         )
-
-    
