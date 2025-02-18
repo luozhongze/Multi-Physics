@@ -2,7 +2,7 @@
 
 ## Statistics of Question Types
 | Acc   | Model              |
-| ----- | ------------------ |
+| ----- | :----------------: |
 | A     | Linear Motion      |
 | B     | Interactions in Mechanics   |
 | C     | Newton's Laws of Motion   |
