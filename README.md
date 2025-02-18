@@ -4,20 +4,20 @@ Physics-MM: A Chinese Benchmark for Evaluating Multimodal Large Language Models 
 
 ## Statistics of Question Types
 
-| Letters     | Question Types              | Number     | Average Question Length     |
-| :-----: | :----------------: | :-----: | :-----: |
-| A       | Linear Motion      | 82       | 168.99       |
-| B       | Interactions in Mechanics   | 155       | 201.05       |
-| C       | Newton's Laws of Motion   | 110       | 201.33       |
-| D       | Curvilinear Motion   | 164       | 203.45       |
-| E       | Law of Universal Gravitation and Space Exploration   | 79       | 250.52       |
-| F       | Mechanical Energy   | 108       | 218.66       |
-| G       | Electrostatic Field   | 173       | 207.30       |
-| H       | Constant Electric Current   | 122       | 183.20       |
-| I       | Magnetic field   | 136       | 245.34       |
-| J       | Electromagnetic induction   | 127       | 197.37       |
-| K       | Alternating current   | 156       | 200.90       |
-| **All**       | **Physics-MM**   | **1412**       | **206.75**       |
+| Letters     | Question Types              | Number     | Average Question Length     | Average Analysis Length     |
+| :-----: | :----------------: | :-----: | :-----: | :-----: |
+| A       | Linear Motion      | 82       | 168.99       | 238.15       |
+| B       | Interactions in Mechanics   | 155       | 201.05       | 218.69       |
+| C       | Newton's Laws of Motion   | 110       | 201.33       | 234.85       |
+| D       | Curvilinear Motion   | 164       | 203.45       | 237.64       |
+| E       | Law of Universal Gravitation and Space Exploration   | 79       | 250.52       | 316.43       |
+| F       | Mechanical Energy   | 108       | 218.66       | 274.52       |
+| G       | Electrostatic Field   | 173       | 207.30       | 212.38       |
+| H       | Constant Electric Current   | 122       | 183.20       | 215.63       |
+| I       | Magnetic field   | 136       | 245.34       | 262.21       |
+| J       | Electromagnetic induction   | 127       | 197.37       | 195.15       |
+| K       | Alternating current   | 156       | 200.90       | 270.12       |
+| **All**       | **Physics-MM**   | **1412**       | **206.75**       | **239.74**       |
 
 ## Evaluation results
 
