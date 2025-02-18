@@ -1,7 +1,7 @@
 # Physics-MM
 
 Physics-MM: A Chinese Benchmark for Evaluating Multimodal Large Language Models in Physics Problems
-![https://github.com/luozhongze/Physics-MM/](https://github.com/luozhongze/Physics-MM/)
+![https://github.com/luozhongze/Physics-MM/]
 
 ## Statistics of Question Types
 
