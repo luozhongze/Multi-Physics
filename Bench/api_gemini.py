@@ -1,16 +1,14 @@
-# -*- coding: utf-8 -*-
-import base64
-import time
-import random
-from openai import OpenAI
+# -*- coding: utf-8 -*- 
+import base64 
+import time 
+import random 
+from openai import OpenAI 
 import google.api_core.exceptions
-
 
 client = OpenAI(
     api_key=" ",
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
 )
-
 
 class GeminiAPI:
     def __init__(self, api_key, model_name, temperature, max_tokens):
@@ -45,23 +43,23 @@ class GeminiAPI:
                 max_tokens=self.max_tokens,
                 temperature=self.temperature
             )
-            #print(f"原始 API 响应: {response}")  # 添加此行
+            #print(f"Original API response: {response}")  # Add this line
             return response
 
         def retry_with_exponential_backoff(func, max_retries=5, base_delay=5):
-            """ 使用指数退避策略重试一个函数调用
-            func: 要调用的函数
-            max_retries: 最大重试次数
-            base_delay: 基础延迟时间（秒）
+            """ Use an exponential backoff strategy to retry a function call
+            func: The function to call
+            max_retries: Maximum number of retries
+            base_delay: Base delay time in seconds
             """
             for attempt in range(max_retries):
                 try:
-                    return func()  # 尝试调用函数
+                    return func()  # Try to call the function
                 except google.api_core.exceptions.ResourceExhausted as e:
                    print(f"Error occurred: {e}")
                    if attempt == max_retries - 1:
-                      raise e  # 超过最大次数，抛出异常
-                   sleep_duration = base_delay * (2 ** attempt) + random.uniform(0, 1)  # 计算退避延迟
+                      raise e  # Exceeded the max retries, raise the exception
+                   sleep_duration = base_delay * (2 ** attempt) + random.uniform(0, 1)  # Calculate the backoff delay
                    print(f"Retrying after {sleep_duration:.2f} seconds")
                    time.sleep(sleep_duration)
             
@@ -73,25 +71,23 @@ class GeminiAPI:
                 print(f"Exception occurred: {e}")
                 time.sleep(1)
 
-
     def postprocess(self, response):
          if response and response.choices and response.choices[0].message:
               return response.choices[0].message.content
          return ""
-
 
     def __call__(self, prompt: str, question: str, picture: list):
        while True:
            response = self.forward(prompt, question, picture)
            
            if response and response.choices and response.choices[0].finish_reason == 'content_filter':
-               print("模型输出被内容过滤器拦截，跳过当前题目。")
-               return " "  # 返回 None，表示被过滤器拦截
+               print("The model output was intercepted by the content filter, skipping this question.")
+               return " "  # Return None, indicating that it was intercepted by the filter
            model_output = self.postprocess(response)
-           if model_output: # 如果model_output不为空
+           if model_output:  # If model_output is not empty
                return model_output
            else:
-               print("Model output is empty, retrying...") # 输出model为空的信息，并重新进行调用
+               print("Model output is empty, retrying...")  # Output when the model result is empty and retrying
 
 def test(model, prompt: str, question: str, picture: list):
     response = model(prompt, question, picture)
