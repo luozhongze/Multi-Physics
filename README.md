@@ -41,6 +41,22 @@ https://github.com/luozhongze/Physics-MM/
 | gemini 2.0 pro exp          | 0.572 | 0.561 | 0.516 | 0.582 | 0.625 | 0.785 | 0.639 | 0.488  | 0.635 | 0.526 | 0.52  | 0.542 |
 | qwen vl max                 | 0.524 | 0.378 | 0.481 | 0.582 | 0.521 | 0.797 | 0.681 | 0.39  | 0.574 | 0.485 | 0.48  | 0.542 |
 
+<style>
+  table {
+    width: 100%;
+    table-layout: fixed; /* 强制表格列宽 */
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  td:first-child, th:first-child {
+    width: 200px; /* 设置第一列的固定宽度 */
+    white-space: nowrap; /* 防止换行 */
+  }
+</style>
+
 <table>
   <tr>
     <th>Different Model</th>
