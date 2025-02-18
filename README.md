@@ -1,5 +1,21 @@
 # Physics-MM
 
+## Statistics of Question Types
+| Acc   | Model              |
+| ----- | ------------------ |
+| A     | Linear Motion      |
+| B     | Interactions in Mechanics   |
+| C     | Newton's Laws of Motion   |
+| D     | Curvilinear Motion   |
+| E     | Law of Universal Gravitation and Space Exploration   |
+| F     | Mechanical Energy   |
+| G     | Electrostatic Field   |
+| H     | Constant Electric Current   |
+| I     | Magnetic field   |
+| J     | Electromagnetic induction   |
+| K     | Alternating current   |
+
+## Evaluation results
 
 | Model              | Acc   | A     | B     | C     | D     | E     | F     | G     | H     | I     | J     | K     |
 | ------------------ | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
