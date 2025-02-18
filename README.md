@@ -17,7 +17,7 @@ Physics-MM: A Chinese Benchmark for Evaluating Multimodal Large Language Models 
 | I       | Magnetic field   | 136       | 245.34       |
 | J       | Electromagnetic induction   | 127       | 197.37       |
 | K       | Alternating current   | 156       | 200.90       |
-| All       | Physics-MM   | 1412       | 206.75       |
+| **All**       | **Physics-MM**   | **1412**       | **206.75**       |
 
 ## Evaluation results
 
