@@ -1,5 +1,7 @@
 # Physics-MM
 
+Physics-MM: A Chinese Benchmark for Evaluating Multimodal Large Language Models in Physics Problems
+
 ## Statistics of Question Types
 
 | Letters     | Question Types              | Number     |
