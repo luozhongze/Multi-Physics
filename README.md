@@ -46,11 +46,11 @@ https://github.com/luozhongze/Physics-MM/
 
 ### 1. Generate Answers
 
-You can directly use the following command to invoke `different model API` for evaluation, and the generated results will be saved in `./Results/your model name`:
+You can directly use the following command to invoke `Different Model API` for evaluation, and the generated results will be saved in `./Results/your model name`, please fill in `your api key` in the code file before doing so:
 
 ```bash
 cd ./Bench
-python choice_bench_`model`.py --`model`_api_key="your api key"
+python choice_bench_model.py
 ```
 
 ## Acknowledgements
