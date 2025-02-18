@@ -51,7 +51,6 @@ You can directly use the following command to invoke `different model API` for e
 ```bash
 cd ./Bench
 python choice_bench_`model`.py --`model`_api_key="your api key"
-```bash
 
 ## Acknowledgements
 
