@@ -40,6 +40,19 @@ https://github.com/luozhongze/Physics-MM/
 | gemini-2.0-pro-exp        | 0.572 | 0.561 | 0.516 | 0.582 | 0.625 | 0.785 | 0.639 | 0.488  | 0.635 | 0.526 | 0.52  | 0.542 |
 | qwen-vl-max        | 0.524 | 0.378 | 0.481 | 0.582 | 0.521 | 0.797 | 0.681 | 0.39  | 0.574 | 0.485 | 0.48  | 0.542 |
 
+## Method
+
+## OpenAI API
+
+### 1. Generate Answers
+
+You can directly use the following command to invoke `different model API` for evaluation, and the generated results will be saved in `./Results/your model name`:
+
+```bash
+cd ./Bench
+python choice_bench_`model`.py --`model`_api_key="your api key"
+```bash
+
 ## Acknowledgements
 
 The dataset was completed by many volunteers (Junhao Wu, Ya Gao, Yang Yu, Yuxi Sun, Mingxin Song, Yanzhe Fan, Peng Yang, Shuangtong Zhu, Zhongyang Cao, Qiwei Song, Zhongze Luo, Mingqi Shao, Jiaming Tian, and Yuting Song). Special thanks for their hard work.
