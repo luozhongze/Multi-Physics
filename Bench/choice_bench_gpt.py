@@ -23,12 +23,11 @@ if __name__ == "__main__":
         data = json.load(f)['examples']
     f.close()
 
-    ### An example of using OpenAI GPT-4Vision model to generate the json file for the benchmarking of the model
     parser = argparse.ArgumentParser()
     args = parser.parse_args()
 
-    model_name = "gpt-4o"
-    model_api = OpenAI_API(model_name="gpt-4o", temperature=0, max_tokens=16384)
+    model_name = "chatgpt-4o-latest"
+    model_api = OpenAI_API(model_name="chatgpt-4o-latest", temperature=0, max_tokens=16384)
 
     multi_images = True # whether to support multi images input, True means support, False means not support
 
