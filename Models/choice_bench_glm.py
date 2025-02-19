@@ -8,14 +8,14 @@ if parent_path not in sys.path:
     sys.path.append(parent_path)
 
 from glm import GLM4V_API_vllm
-from bench_function import export_distribute_json
+from ..Bench.bench_function import export_distribute_json
 import json
 
-model_path = "/root/yzs/glm-4v" # Define model path for GLM4V_API_vllm
+model_path = "./glm-4v" # your model path
 
 if __name__ == "__main__":
 
-    with open("./MCQ_prompt1.json", "r", encoding="utf-8") as f:
+    with open("../Bench/MCQ_prompt1.json", "r", encoding="utf-8") as f:
         data = json.load(f)['examples']
     f.close()
 
