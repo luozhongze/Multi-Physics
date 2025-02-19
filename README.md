@@ -34,8 +34,7 @@ https://github.com/luozhongze/Physics-MM/
 
 ## Evaluation results
 
-| Closed-source LMMs    |
-| --------------------------------------------------------------------------------------- |
+Closed-source LMMs:
 
 | Model             | Overall   | A     | B     | C     | D     | E     | F     | G     | H     | I     | J     | K     |
 | --------------------------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
