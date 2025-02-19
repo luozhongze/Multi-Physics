@@ -67,7 +67,7 @@ def test_vllm(model, prompt: str, question: str, picture: list): # Function name
 
 if __name__ == "__main__":
     # Important: Please modify model_path to your actual model path
-    model_path = "/root/yzs/glm-4v" # Replace with your GLM-4V model local path
+    model_path = "./glm-4v" # Replace with your GLM-4V model local path
 
     # Initialize GLM-4V model API (vllm version)
     model_api_vllm = GLM4V_API_vllm(model_path=model_path) # Use vllm version of API
