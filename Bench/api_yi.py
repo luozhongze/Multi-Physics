@@ -6,7 +6,7 @@ from openai import OpenAI
 
 
 client = OpenAI(
-    api_key=" ",  # 如果使用环境变量，请设置环境变量"YOUR_API_KEY"
+    api_key=" ",  # If using environment variables, set the environment variable "YOUR_API_KEY"
     base_url="https://api.lingyiwanwu.com/v1",
 )
 
@@ -23,9 +23,9 @@ class YiAPI:
             return base64.b64encode(image_file.read()).decode('utf-8')
 
     def forward(self, prompt, question, picture):
-        # 构建 content 列表，先添加文本部分
+        # Build the content list, starting with the text part
         usr_content = [{"type": "text", "text": question}]
-        # 再添加图片部分
+        # Add the image part
         for pic in picture:
             usr_content.append({
                 'type': "image_url",
@@ -49,19 +49,19 @@ class YiAPI:
             return response
 
         def retry_with_exponential_backoff(func, max_retries=5, base_delay=5):
-            """ 使用指数退避策略重试一个函数调用
-            func: 要调用的函数
-            max_retries: 最大重试次数
-            base_delay: 基础延迟时间（秒）
+            """ Retry a function call with exponential backoff strategy
+            func: The function to call
+            max_retries: Maximum number of retries
+            base_delay: Base delay time (in seconds)
             """
             for attempt in range(max_retries):
                 try:
-                    return func()  # 尝试调用函数
+                    return func()  # Attempt to call the function
                 except Exception as e:
                     print(f"Error occurred: {e}")
                     if attempt == max_retries - 1:
-                        raise e  # 超过最大次数，抛出异常
-                    sleep_duration = base_delay * (2 ** attempt) + random.uniform(0, 1)  # 计算退避延迟
+                        raise e  # If max retries reached, raise the exception
+                    sleep_duration = base_delay * (2 ** attempt) + random.uniform(0, 1)  # Calculate backoff delay
                     print(f"Retrying after {sleep_duration:.2f} seconds")
                     time.sleep(sleep_duration)
             
@@ -85,13 +85,13 @@ class YiAPI:
            response = self.forward(prompt, question, picture)
            
            if response and response.choices and response.choices[0].finish_reason == 'content_filter':
-               print("模型输出被内容过滤器拦截，跳过当前题目。")
-               return " "  # 返回 None，表示被过滤器拦截
+               print("Model output was blocked by the content filter, skipping the current question.")
+               return " "  # Return None to indicate the output was blocked by the filter
            model_output = self.postprocess(response)
-           if model_output: # 如果model_output不为空
+           if model_output: # If model_output is not empty
                return model_output
            else:
-               print("Model output is empty, retrying...") # 输出model为空的信息，并重新进行调用
+               print("Model output is empty, retrying...") # Print message indicating empty output and retry
 
 def test(model, prompt: str, question: str, picture: list):
     response = model(prompt, question, picture)
@@ -116,7 +116,7 @@ if __name__ == "__main__":
 
     choice_question = data_example['question']
     choice_picture = data_example['picture']
-    choice_prompt = "请你做一道物理选择题。\n请你结合文字和图片一步一步思考。你将从A，B，C，D中选出正确的答案，并写在【答案】和<eoa>之间。\n例如：【答案】: A <eoa>\n完整的题目回答的格式如下：\n【解析】 ... <eoe>\n【答案】 ... <eoa>\n请你严格按照上述格式作答。\n题目如下："
+    choice_prompt = "Please solve a physics multiple-choice question.\nPlease think step by step based on the text and image. You will select the correct answer from A, B, C, D and write it between 【Answer】 and <eoa>.\nFor example: 【Answer】: A <eoa>\nThe complete answer format is as follows:\n【Explanation】 ... <eoe>\n【Answer】 ... <eoa>\nPlease strictly follow the above format.\nThe question is as follows:"
 
     result = test(model_api, choice_prompt, choice_question, choice_picture)
 
