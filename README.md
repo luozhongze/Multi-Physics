@@ -1,7 +1,7 @@
-# Physics-MM
+# Physics-Bench
 
-Physics-MM: A Chinese Benchmark for Evaluating Multimodal Large Language Models in Physics Problems
-https://github.com/luozhongze/Physics-MM/
+Physics-Bench: Towards Comprehensive Physical Reasoning Evaluation of Multimodal LLMs in Chinese Physics Problems
+https://github.com/luozhongze/Physics-Bench/
 
 ## Statistics of Question Types
 
@@ -18,7 +18,7 @@ https://github.com/luozhongze/Physics-MM/
 | I       | Magnetic field   | 136       | 245.34       | 262.21       |
 | J       | Electromagnetic induction   | 127       | 197.37       | 195.15       |
 | K       | Alternating current   | 156       | 200.90       | 270.12       |
-| **All**       | **Physics-MM**   | **1412**       | **206.75**       | **239.74**       |
+| **All**       | **Physics-Bench**   | **1412**       | **206.75**       | **239.74**       |
 
 ## The comparison with other existing benchmarks
 
@@ -30,7 +30,7 @@ https://github.com/luozhongze/Physics-MM/
 | MMU             | 11.5K  | 59.23         | None | ✓     | MC+Open      | Eng.   |
 | MM-Bench-CN     | 3K     | 15.48         | None | ✗     | MC           | T. Chi |
 | GAOKAO-MM       | 0.65K  | 260.19        | None | ✓     | MC           | N. Chi |
-| **Physics-MM**      | **1.41K**  | **206.75**        | **239.74** | **✓**     | **MC**           | **N. Chi** |
+| **Physics-Bench**      | **1.41K**  | **206.75**        | **239.74** | **✓**     | **MC**           | **N. Chi** |
 
 ## Evaluation results
 
