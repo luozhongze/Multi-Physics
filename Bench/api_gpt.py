@@ -18,9 +18,7 @@ class OpenAI_API:
             return base64.b64encode(image_file.read()).decode('utf-8')
 
     def forward(self, prompt, question, picture):
-        # 构建 content 列表，先添加文本部分
         usr_content = [{"type": "text", "text": question}]
-        # 再添加图片部分
         for pic in picture:
             usr_content.append({
                 'type': "image_url",
