@@ -74,7 +74,7 @@ python OBJ_score_evaluation.py --obj_output_dir=../Results/your model name
 
 ### Other Models
 
-You can evaluate other models and store them in `./Models`, with the encapsulation method referable to `./Models/glm.py`.
+You can deploy other models for evaluation and store them in `./Models`. For specific methods, please refer to `./Models/glm.py`.
 
 ## Acknowledgements
 
