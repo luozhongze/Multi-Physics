@@ -1,14 +1,16 @@
-# -*- coding: utf-8 -*- 
-import base64 
-import time 
-import random 
-from openai import OpenAI 
+# -*- coding: utf-8 -*-
+import base64
+import time
+import random
+from openai import OpenAI
 import google.api_core.exceptions
 
+
 client = OpenAI(
-    api_key=" ",
+    api_key=" ",  # If using environment variables, please set the environment variable "YOUR_API_KEY"
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
 )
+
 
 class GeminiAPI:
     def __init__(self, api_key, model_name, temperature, max_tokens):
@@ -22,7 +24,9 @@ class GeminiAPI:
             return base64.b64encode(image_file.read()).decode('utf-8')
 
     def forward(self, prompt, question, picture):
+        # Build content list, add text part first
         usr_content = [{"type": "text", "text": question}]
+        # Then add image part
         for pic in picture:
             usr_content.append({
                 'type': "image_url",
@@ -43,51 +47,65 @@ class GeminiAPI:
                 max_tokens=self.max_tokens,
                 temperature=self.temperature
             )
-            #print(f"Original API response: {response}")  # Add this line
+            #print(f"原始 API 响应: {response}")  # Add this line
             return response
 
         def retry_with_exponential_backoff(func, max_retries=5, base_delay=5):
-            """ Use an exponential backoff strategy to retry a function call
+            """ Retry a function call using exponential backoff strategy
             func: The function to call
             max_retries: Maximum number of retries
-            base_delay: Base delay time in seconds
+            base_delay: Base delay time (seconds)
             """
             for attempt in range(max_retries):
                 try:
                     return func()  # Try to call the function
                 except google.api_core.exceptions.ResourceExhausted as e:
-                   print(f"Error occurred: {e}")
+                   print(f"Error occurred (ResourceExhausted): {e}")
                    if attempt == max_retries - 1:
-                      raise e  # Exceeded the max retries, raise the exception
-                   sleep_duration = base_delay * (2 ** attempt) + random.uniform(0, 1)  # Calculate the backoff delay
+                      raise e  # Exceed maximum number of attempts, raise exception
+                   sleep_duration = base_delay * (2 ** attempt) + random.uniform(0, 1)  # Calculate backoff delay
                    print(f"Retrying after {sleep_duration:.2f} seconds")
                    time.sleep(sleep_duration)
-            
-        while True:
-            try:
-                response = retry_with_exponential_backoff(_api_call)
-                return response
-            except Exception as e:
-                print(f"Exception occurred: {e}")
-                time.sleep(1)
+                except Exception as e: # Capture all other exceptions, including 500 errors
+                    if "500" in str(e): # Check if the exception information contains "500"
+                        print(f"Encountered 500 error: {e}") # Encountered 500 error
+                        return None  # Return None to indicate encountering a 500 error, need to skip
+                    else:
+                        raise e # If not a 500 error, re-raise it, let the outer __call__ method handle it
+
+        #while True: # Remove while True loop because retry_with_exponential_backoff already includes retry logic
+        try: # Put API call in try...except block
+            response = retry_with_exponential_backoff(_api_call)
+            return response
+        except Exception as e: # Capture unhandled exceptions in retry_with_exponential_backoff
+            print(f"Exception occurred in forward after retry: {e}")
+            return None # Return None, let the outer __call__ method handle skipping
+
 
     def postprocess(self, response):
          if response and response.choices and response.choices[0].message:
               return response.choices[0].message.content
          return ""
 
+
     def __call__(self, prompt: str, question: str, picture: list):
-       while True:
+       #while True: # Remove while True loop in __call__ method
            response = self.forward(prompt, question, picture)
-           
+
+           if response is None: # Check if forward method returns None, indicating 500 error or retry failure
+               print("Skipping this question (500 error or retry failed)") # Skip this question (500 error or retry failed)
+               return " " # Return " " to indicate skipping the question
+
            if response and response.choices and response.choices[0].finish_reason == 'content_filter':
-               print("The model output was intercepted by the content filter, skipping this question.")
-               return " "  # Return None, indicating that it was intercepted by the filter
+               print("Model output was blocked by content filter, skipping this question.") # Model output intercepted by content filter, skip current question.
+               return " "  # Return " ", indicating intercepted by filter
            model_output = self.postprocess(response)
-           if model_output:  # If model_output is not empty
+           if model_output: # If model_output is not empty
                return model_output
            else:
-               print("Model output is empty, retrying...")  # Output when the model result is empty and retrying
+               print("Model output is empty, retrying...") # Output model is empty information, and re-call again
+               return " " #  Model output is empty, also skip, avoid infinite retry, directly return " "
+
 
 def test(model, prompt: str, question: str, picture: list):
     response = model(prompt, question, picture)
@@ -95,7 +113,7 @@ def test(model, prompt: str, question: str, picture: list):
 
 if __name__ == "__main__":
     api_key = " ",
-    model_api = GeminiAPI(api_key, model_name="gemini-2.0-flash-exp", temperature=0, max_tokens=3000)
+    model_api = GeminiAPI(api_key, model_name="gemini-2.0-flash-thinking-exp-01-21", temperature=0, max_tokens=65536)
 
     data_example = {
         "category": "exclusive",
