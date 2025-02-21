@@ -170,7 +170,7 @@ def process_single_example(model_api, prompt_prefix, example, original_data_dict
 
 if __name__ == "__main__":
     api_key = " " # Replace with your API key or use environment variables
-    model_api = GeminiAPI(api_key, model_name="gemini-2.0-flash-001", temperature=0, max_tokens=8192)
+    model_api = GeminiAPI(api_key, model_name="gemini-2.0-flash-thinking-exp-01-21", temperature=0, max_tokens=65536)
 
     results_dir = "../Results/gemini-2.0-flash" # Directory where result json files are located
     data_dir = "../Data" # Directory where original data json files are located
