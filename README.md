@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/65dc6266-0bf7-4975-b412-00b9a6de75ee)# Physics-Bench
+# Physics-Bench
 
 Physics-Bench: Towards Comprehensive Physical Reasoning Evaluation of Multimodal LLMs in Chinese Physics Problems
 https://github.com/luozhongze/Physics-Bench/
