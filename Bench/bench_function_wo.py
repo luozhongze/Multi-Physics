@@ -22,7 +22,7 @@ def extract_choice_answer(model_output, question_type, answer_lenth=None):
         if answer_index == -1: 
             answer_index = content.find('**答案**') 
 
-        if answer_index != -1: 
+        if answer_index != -1:
             temp = content[answer_index:]
             if len(re.findall(r'[A-D]', temp)) > 0:
                 answer = "".join(re.findall(r'[A-D]', temp)) 
@@ -45,7 +45,6 @@ def choice_test(**kwargs):
     keyword = kwargs['keyword']
     prompt = kwargs['prompt']
     question_type = kwargs['question_type']
-    multi_images = kwargs['multi_images']
     
     save_dir = f'../Results/{model_name}'
     if not os.path.exists(save_dir):
@@ -66,16 +65,12 @@ def choice_test(**kwargs):
 
         index = data[i]['index']
         question = data[i]['question'].strip() + '\n'
-        picture = data[i]['picture']
         category = data[i]['category']
         standard_answer = data[i]['answer']
         answer_lenth = len(standard_answer)
         analysis = data[i]['analysis']
 
-        if multi_images is False and len(picture) > 1:
-            continue
-
-        model_output = model_api(prompt, question, picture)
+        model_output = model_api(prompt, question)
         model_answer = extract_choice_answer(model_output, question_type, answer_lenth)
 
         dict = {
@@ -108,8 +103,7 @@ def export_distribute_json(
         directory: str, 
         keyword: str, 
         zero_shot_prompt_text: str, 
-        question_type: str,
-        multi_images: bool = True,
+        question_type: str
     ) -> None:
 
     for root, _, files in os.walk(directory):
@@ -119,14 +113,14 @@ def export_distribute_json(
                 with codecs.open(filepath, 'r', 'utf-8') as f:
                     data = json.load(f)
         
+    
     kwargs = {
         'model_api': model_api,
         'model_name': model_name, 
         'data': data, 
         'keyword': keyword, 
         'prompt': zero_shot_prompt_text, 
-        'question_type': question_type, 
-        'multi_images': multi_images,
+        'question_type': question_type
     }
     
     if question_type in ["single_choice", "multi_choice"]:

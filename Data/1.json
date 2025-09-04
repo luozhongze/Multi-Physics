@@ -407,7 +407,7 @@
             "answer": [
                 "B"
             ],
-            "analysis": "在v-t图象中，图线与坐标轴所围的面积大小表示位移，由图象可知，10s到30s甲、乙两车通过的位移相等，两车在30s时并排行驶，所以两车在10s时也并排行驶，故A、C错误；图象可知,甲的加速度为$a_{1}=\\frac{\\Delta\\v}{\\Delta t}=4\\mathrm{m}/\\mathrm{s}^{2}$，乙的加速度为$a_{2}=\\frac{\\Delta\\v}{\\Delta t}=2\\mathrm{m/s}^{2}$，0至10s，甲的位移：$x_{1}=\\frac{1}{2} a_{1}t_{1}^{2}=\\frac{1}{2}\\times4\\times10^{2} \\mathrm{m}=200\\mathrm{m}$，乙的位移：$x_{2}=\\frac{1}{2} a_{2}t_{1}^{2}=\\frac{1}{2}\\times2\\times10^{2} \\mathrm{m}=100\\mathrm{m}$，即在0时，乙车在甲车前100m，故B正确；甲、乙车两次并排行驶之间也就是10s到30s之间，两车速度相等时，距离最远，也就是20s时相距离最远，10s两车并排，10s至20s，甲的位移：$x_{1}^{\\prime}=40\\times10\\mathrm{m}=400\\mathrm{m}$，乙的位移：x_{2}^{\\prime}=\\frac{1}{2}\\times\\left(\\begin{matrix}{20+40}\\end{matrix}\\right)\\times10\\mathrm{m}=300\\mathrm{m}，两车距离$\\Delta X$=400m-300m=100m，故D错误。",
+            "analysis": "在v-t图象中，图线与坐标轴所围的面积大小表示位移，由图象可知，10s到30s甲、乙两车通过的位移相等，两车在30s时并排行驶，所以两车在10s时也并排行驶，故A、C错误；图象可知,甲的加速度为$a_{1}=\\frac{\\Delta\\v}{\\Delta t}=4\\mathrm{m}/\\mathrm{s}^{2}$，乙的加速度为$a_{2}=\\frac{\\Delta\\v}{\\Delta t}=2\\mathrm{m/s}^{2}$，0至10s，甲的位移：$x_{1}=\\frac{1}{2} a_{1}t_{1}^{2}=\\frac{1}{2}\\times4\\times10^{2}, \\mathrm{m}=200\\mathrm{m}$，乙的位移：$x_{2}=\\frac{1}{2} a_{2}t_{1}^{2}=\\frac{1}{2}\\times2\\times10^{2} \\mathrm{m}=100\\mathrm{m}$，即在0时，乙车在甲车前100m，故B正确；甲、乙车两次并排行驶之间也就是10s到30s之间，两车速度相等时，距离最远，也就是20s时相距离最远，10s两车并排，10s至20s，甲的位移：$x_{1}^{\\prime}=40\\times10\\mathrm{m}=400\\mathrm{m}$，乙的位移：x_{2}^{\\prime}=\\frac{1}{2}\\times\\left(\\begin{matrix}{20+40}\\end{matrix}\\right)\\times10\\mathrm{m}=300\\mathrm{m}，两车距离$\\Delta X$=400m-300m=100m，故D错误。",
             "index": 33
         },
         {

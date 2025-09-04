@@ -1,10 +1,7 @@
-## This script is used to evaluate the accuracy of the model output in the form of json file.
 import json
 import os
-from statistics import mean
 import codecs
 import argparse
-
 
 score_dict = {
         "model_name": None,
@@ -187,7 +184,7 @@ def obj_score_eval(obj_output_dir: str) -> None:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--obj_output_dir', type=str, default='../Results/gemini-2.0-flash')
+    parser.add_argument('--obj_output_dir', type=str, default='../Results/gemini-2.5-pro')
 
     args = parser.parse_args()
 

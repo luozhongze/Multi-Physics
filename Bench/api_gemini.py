@@ -5,28 +5,26 @@ import random
 from openai import OpenAI
 import google.api_core.exceptions
 
-
 client = OpenAI(
-    api_key=" ",  # If using environment variables, please set the environment variable "YOUR_API_KEY"
+    api_key=" ",  
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
 )
 
-
 class GeminiAPI:
-    def __init__(self, api_key, model_name, temperature, max_tokens):
+    def __init__(self, api_key, model_name, temperature, max_tokens, rate_limit_rpm=2000):
         self.model_name = model_name
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.api_key = api_key
+        self.rate_limit_rpm = rate_limit_rpm
+        self.last_call_time = 0  
 
     def encode_image(self, image_path):
         with open(image_path, "rb") as image_file:
             return base64.b64encode(image_file.read()).decode('utf-8')
 
     def forward(self, prompt, question, picture):
-        # Build content list, add text part first
         usr_content = [{"type": "text", "text": question}]
-        # Then add image part
         for pic in picture:
             usr_content.append({
                 'type': "image_url",
@@ -47,39 +45,33 @@ class GeminiAPI:
                 max_tokens=self.max_tokens,
                 temperature=self.temperature
             )
-            #print(f"原始 API 响应: {response}")  # Add this line
             return response
 
         def retry_with_exponential_backoff(func, max_retries=5, base_delay=5):
-            """ Retry a function call using exponential backoff strategy
-            func: The function to call
-            max_retries: Maximum number of retries
-            base_delay: Base delay time (seconds)
-            """
+
             for attempt in range(max_retries):
                 try:
-                    return func()  # Try to call the function
+                    return func()  
                 except google.api_core.exceptions.ResourceExhausted as e:
                    print(f"Error occurred (ResourceExhausted): {e}")
                    if attempt == max_retries - 1:
-                      raise e  # Exceed maximum number of attempts, raise exception
-                   sleep_duration = base_delay * (2 ** attempt) + random.uniform(0, 1)  # Calculate backoff delay
+                      raise e  
+                   sleep_duration = base_delay * (2 ** attempt) + random.uniform(0, 1) 
                    print(f"Retrying after {sleep_duration:.2f} seconds")
                    time.sleep(sleep_duration)
-                except Exception as e: # Capture all other exceptions, including 500 errors
-                    if "500" in str(e): # Check if the exception information contains "500"
-                        print(f"Encountered 500 error: {e}") # Encountered 500 error
-                        return None  # Return None to indicate encountering a 500 error, need to skip
+                except Exception as e: 
+                    if "500" in str(e): 
+                        print(f"Error 500: {e}")
+                        return None 
                     else:
-                        raise e # If not a 500 error, re-raise it, let the outer __call__ method handle it
+                        raise e 
 
-        #while True: # Remove while True loop because retry_with_exponential_backoff already includes retry logic
-        try: # Put API call in try...except block
+        try: 
             response = retry_with_exponential_backoff(_api_call)
             return response
-        except Exception as e: # Capture unhandled exceptions in retry_with_exponential_backoff
+        except Exception as e: 
             print(f"Exception occurred in forward after retry: {e}")
-            return None # Return None, let the outer __call__ method handle skipping
+            return None
 
 
     def postprocess(self, response):
@@ -89,22 +81,31 @@ class GeminiAPI:
 
 
     def __call__(self, prompt: str, question: str, picture: list):
-       #while True: # Remove while True loop in __call__ method
-           response = self.forward(prompt, question, picture)
 
-           if response is None: # Check if forward method returns None, indicating 500 error or retry failure
-               print("Skipping this question (500 error or retry failed)") # Skip this question (500 error or retry failed)
-               return " " # Return " " to indicate skipping the question
+        min_delay = 60 / self.rate_limit_rpm
 
-           if response and response.choices and response.choices[0].finish_reason == 'content_filter':
-               print("Model output was blocked by content filter, skipping this question.") # Model output intercepted by content filter, skip current question.
-               return " "  # Return " ", indicating intercepted by filter
-           model_output = self.postprocess(response)
-           if model_output: # If model_output is not empty
-               return model_output
-           else:
-               print("Model output is empty, retrying...") # Output model is empty information, and re-call again
-               return " " #  Model output is empty, also skip, avoid infinite retry, directly return " "
+        current_time = time.time()
+        time_since_last_call = current_time - self.last_call_time
+
+        if time_since_last_call < min_delay:
+            time.sleep(min_delay - time_since_last_call)
+
+        self.last_call_time = time.time()
+
+        response = self.forward(prompt, question, picture)
+
+        if response is None:
+            return " "  
+
+        if response and response.choices and response.choices[0].finish_reason == 'content_filter':
+            return " "  
+
+        model_output = self.postprocess(response)
+        if model_output:
+            return model_output
+        else:
+            print("Model output is empty, retrying...")
+            return " "  
 
 
 def test(model, prompt: str, question: str, picture: list):
@@ -113,7 +114,7 @@ def test(model, prompt: str, question: str, picture: list):
 
 if __name__ == "__main__":
     api_key = " ",
-    model_api = GeminiAPI(api_key, model_name="gemini-2.0-flash-thinking-exp-01-21", temperature=0, max_tokens=65536)
+    model_api = GeminiAPI(api_key, model_name="gemini-2.5-pro", temperature=0.3, max_tokens=65536)
 
     data_example = {
         "category": "exclusive",

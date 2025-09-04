@@ -1,4 +1,3 @@
-### This file is used to generate the json file for the benchmarking of the model
 import sys
 import os
 import argparse
@@ -20,7 +19,6 @@ client = OpenAI(
 
 if __name__ == "__main__":
 
-    # Load the MCQ_prompt.json file
     with open("./MCQ_prompt1.json", "r", encoding="utf-8") as f:
         data = json.load(f)['examples']
     f.close()
@@ -28,11 +26,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     args = parser.parse_args()
 
-    model_name = "gemini-2.0-flash"
+    model_name = "gemini-2.5-pro"
     api_key = " "
-    model_api = GeminiAPI(api_key, model_name="gemini-2.0-flash", temperature=0, max_tokens=8192)
+    model_api = GeminiAPI(api_key, model_name="gemini-2.5-pro", temperature=0.3, max_tokens=65536)
 
-    multi_images = True # whether to support multi images input, True means support, False means not support
+    multi_images = True 
 
         
     for i in range(len(data)):
