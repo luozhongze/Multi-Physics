@@ -4,16 +4,17 @@ While multimodel LLMs demonstrate remarkable reasoning progress, their applicati
 
 ## Statistics of subject questions
 
+![img](./Figures/Table1.png)
 
-## The comparison with other existing benchmarks
+## Comparison of Multi-Physics and other benchmarks
 
-
+![img](./Figures/Table2.png)
 
 ## Evaluation results
 
+![img](./Figures/Table3.png)
 
 Evaluation results (Evaluation with CoT (Average Step Accuracy/Average Step Count))
-
 
 ## Method
 
