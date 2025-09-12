@@ -13,9 +13,17 @@ While multimodel LLMs demonstrate remarkable reasoning progress, their applicati
 
 Please click here to view our paper: [PDF](https://luozhongze.github.io/Multi-Physics/paper.pdf)
 
-## Example of dataset and CoT Evaluation (Translated)
+## Distribution of difficulty levels.
 
 ![img](./Figures/Figure1.png)
+
+## Example of dataset and CoT Evaluation. (Translated)
+
+![img](./Figures/Figure2.png)
+
+## Performance results of the two models.
+
+![img](./Figures/Figure3.png)
 
 ## Statistics of subject questions
 
