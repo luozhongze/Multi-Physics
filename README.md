@@ -13,6 +13,17 @@ While multimodel LLMs demonstrate remarkable reasoning progress, their applicati
 
 Please click here to view our paper: [arXiv](https://arxiv.org/abs/2509.15839)
 
+## Citation
+
+```
+@article{luo2025multi,
+  title={Multi-Physics: A Comprehensive Benchmark for Multimodal LLMs Reasoning on Chinese Multi-Subject Physics Problems},
+  author={Luo, Zhongze and Yin, Zhenshuai and Guo, Yongxin and Wang, Zhichao and Zhu, Jionghao and Tang, Xiaoying},
+  journal={arXiv preprint arXiv:2509.15839},
+  year={2025}
+}
+```
+
 ## Distribution of difficulty levels.
 
 ![img](./Figures/Figure1.png)
