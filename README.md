@@ -25,15 +25,15 @@ While multimodel LLMs demonstrate remarkable reasoning progress, their applicati
 }
 ```
 
-## Distribution of difficulty levels.
+## Distribution of difficulty levels
 
 ![img](./Figures/Figure1.png)
 
-## Example of dataset and CoT Evaluation. (Translated)
+## Example of dataset and CoT Evaluation (Translated)
 
 ![img](./Figures/Figure2.png)
 
-## Performance results of the two models.
+## Performance results of the two models
 
 ![img](./Figures/Figure3.png)
 
@@ -99,6 +99,8 @@ You can directly use the following command to calculate the performance results 
 python difficultyscore.py --obj_output_dir=../Results/your model name
 ```
 
-## Acknowledgements
+## Acknowledgement
+
+This work is supported in part by the Guangdong Basic and Applied Basic Research Foundation under Grant No. 2025A1515012968, Shenzhen Science and Technology Program under Grant No. JCYJ20240813113502004, National Natural Science Foundation of China under Grant No. 62001412, in part by the funding from Shenzhen Institute of Artificial Intelligence and Robotics for Society, in part by Shenzhen Stability Science Program 2023, and in part by the Guangdong Provincial Key Laboratory of Future Networks of Intelligence (Grant No. 2022B1212010001).
 
 This work was helped by volunteers, and we would like to thank them for their hard work. (Qizhi Zheng, Yi Xiao, Junyu Pan, Zhan Shen, Junhao Wu, Ya Gao, Yang Yu, Yuxi Sun, Mingxin Song, Yanzhe Fan, Peng Yang, Shuangtong Zhu, Zhongyang Cao, Qiwei Song, Mingqi Shao, Jiaming Tian, and Yuting Song)
