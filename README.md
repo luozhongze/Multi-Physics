@@ -2,13 +2,13 @@
 
 <div align="center">
 
+**Paper:** [https://arxiv.org/abs/2509.15839](https://arxiv.org/abs/2509.15839) <br>
+
 *Zhongze Luo1, Zhenshuai Yin1, Yongxin Guo1, Jionghao Zhu1, Zhichao Wang1, Xiaoying Tang1,2,3**  <br>
 1 School of Science and Engineering, The Chinese University of Hong Kong, Shenzhen, China  <br>
 2 The Shenzhen Future Network of Intelligence Institute (FNii-Shenzhen), China  <br>
 3 The Guangdong Provincial Key Laboratory of Future Networks of Intelligence, China  <br>
 *Corresponding author: Xiaoying Tang</em>  <br>
-
-**Paper:** [https://arxiv.org/abs/2509.15839](https://arxiv.org/abs/2509.15839) <br>
 
 </div>
 
